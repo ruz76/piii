@@ -1,7 +1,5 @@
 package cz.vsb.ruz76.piii;
 
-import java.util.Date;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -10,5 +8,7 @@ public class Main {
         Cisla cisla = new Cisla();
         cisla.datum();
         cisla.suma(Integer.parseInt(args[0]));
+        cisla.printRandom();
+        cisla.generatePoints(Integer.parseInt(args[0]));
     }
 }
