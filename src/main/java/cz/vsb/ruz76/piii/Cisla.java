@@ -83,6 +83,7 @@ public class Cisla {
                 double y = 49 + (r2 * 2);
                 Point p = new Point(x, y);
                 Point random_p = new Point(new Extent("Czech Republic"));
+                Measure m = new Measure(x, y);
                 double dust = 20 + (r3 * 500);
                 double temperature = 0 + (r3 * 10);
                 double pressure = 910 + (r3 * 50);
