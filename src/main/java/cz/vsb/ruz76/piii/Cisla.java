@@ -81,6 +81,9 @@ public class Cisla {
                 double r3 = r.nextDouble();
                 double x = 12 + (r1 * 7);
                 double y = 49 + (r2 * 2);
+                Point p = new Point();
+                p.setX(x);
+                p.setY(y);
                 double dust = 20 + (r3 * 500);
                 double temperature = 0 + (r3 * 10);
                 double pressure = 910 + (r3 * 50);
