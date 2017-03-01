@@ -59,6 +59,25 @@ public class Cisla {
     }
 
     /**
+     * Vygeneruje n náhodných bodů v Extentu 12 49 19 51
+     * @param count počet bodů
+     */
+    public void generateMeasures(int count) {
+        Random r = new Random();
+        for (int i=0; i < count; i++) {
+            double r1 = r.nextDouble();
+            double r2 = r.nextDouble();
+            double r3 = r.nextDouble();
+            double x = 12 + (r1 * 7);
+            double y = 49 + (r2 * 2);
+            double dust = 20 + (r3 * 500);
+            double temperature = 0 + (r3 * 10);
+            double pressure = 910 + (r3 * 50);
+            System.out.println(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure);
+        }
+    }
+
+    /**
      * Vygeneruje grid v podobě bodů a polygonů v Extentu 12 48 19 51.
      * @param size velikost buňky gridu
      */
@@ -69,12 +88,21 @@ public class Cisla {
         for (int i=0; i < (int) (6 / size); i++) {
             for (int j=0; j < (int) (3 / size); j++) {
                 double x = 12 + i * size;
-                double y = 48 + i * size;
+                double y = 48 + j * size;
+                //double y = 48 + i * size;
                 System.out.println("POINT(" + x + " " + y + ")");
-                double x2 = x + size;
-                double y2 = y + size;
-                System.out.println("POLYGON((" + x + " " + y + ", " + x2 + " " + y + ", " + x + " " + y2 + ", " + x + " " + y + "))");
+                System.out.println(getGridRectangle(x, y, size));
+                //System.out.println("POLYGON((" + x + " " + y + ", " + x2 + " " + y + ", " + x + " " + y2 + ", " + x + " " + y + "))");
             }
         }
     }
+
+    private String getGridRectangle(double x, double y, double size) {
+        double x2 = x + size;
+        double y2 = y + size;
+        String polygon = "POLYGON((" + x + " " + y + ", " + x2 + " " + y + ", " + x2 + " " + y2 +  ", " + x + " " + y2 + ", " + x + " " + y + "))";
+        return "POLYGON ...";
+    }
+
+
 }

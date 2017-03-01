@@ -14,6 +14,7 @@ public class Main {
         //cisla.suma(Integer.parseInt(args[0]));
         //cisla.printRandom();
         //cisla.generatePoints(Integer.parseInt(args[0]));
-        cisla.generateGrid(0.5);
+        //cisla.generateGrid(0.5);
+        cisla.generateMeasures(50);
     }
 }
