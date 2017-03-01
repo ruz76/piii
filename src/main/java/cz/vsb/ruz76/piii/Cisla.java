@@ -84,7 +84,8 @@ public class Cisla {
                 double dust = 20 + (r3 * 500);
                 double temperature = 0 + (r3 * 10);
                 double pressure = 910 + (r3 * 50);
-                bw.write(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure + "\n");
+                bw.write(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure + System.lineSeparator());
+                //bw.write(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure + "\N");
             }
         } catch (IOException e) {
             e.printStackTrace();
