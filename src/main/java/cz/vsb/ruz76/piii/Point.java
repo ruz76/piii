@@ -80,4 +80,17 @@ public class Point {
         }
         return output;
     }
+
+    public String toString(String type, String type2) {
+        switch (type.toLowerCase()) {
+            case "wkt":
+                return this.toString();
+            case "simple":
+                return x + " " + y;
+            case "super":
+                return super.toString();
+            default:
+                return this.toString();
+        }
+    }
 }
