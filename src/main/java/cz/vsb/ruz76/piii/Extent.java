@@ -23,6 +23,12 @@ public class Extent {
                 maxx = 22;
                 maxy = 49;
                 break;
+            case "World":
+                minx = -180;
+                miny = -90;
+                maxx = 180;
+                maxy = 90;
+                break;
             default:
                 minx = -180;
                 miny = -90;
