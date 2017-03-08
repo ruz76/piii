@@ -17,6 +17,18 @@ public class Extent {
                 maxx = 19;
                 maxy = 51;
                 break;
+            case "Slovakia":
+                minx = 18;
+                miny = 47;
+                maxx = 22;
+                maxy = 49;
+                break;
+            default:
+                minx = -180;
+                miny = -90;
+                maxx = 180;
+                maxy = 90;
+                break;
         }
     }
 
