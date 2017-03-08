@@ -1,8 +1,6 @@
 package cz.vsb.ruz76.piii;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Random;
 
@@ -11,6 +9,27 @@ import java.util.Random;
  */
 public class Cisla {
     private static final String FILENAME = "measures.csv";
+
+    public void readMeasures() {
+        String csvFile = "measures.csv";
+        String line = "";
+        String cvsSplitBy = ";";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                //String[] country = line.split(cvsSplitBy);
+                //System.out.println("Country [code= " + country[4] + " , name=" + country[5] + "]");
+                System.out.println(line);
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Vypíše dnešní datum
