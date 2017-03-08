@@ -64,11 +64,11 @@ public class Point {
 
     public String toString(String type) {
         String output = this.toString();
-        switch (type) {
-            case "WKT":
+        switch (type.toLowerCase()) {
+            case "wkt":
                 output = this.toString();
                 break;
-            case "Simple":
+            case "simple":
                 output = x + " " + y;
                 break;
             case "super":
