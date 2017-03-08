@@ -9,9 +9,13 @@ public class Main {
     public static void main(String[] args) {
 	    // write your code here
         //System.out.println(args[0]);
-        Point p = new Point(10, 15);
+        Point p = new Point(-10, 20);
         Point p2 = new Point(10, 20);
         System.out.println(p2.getDistance(p));
+
+        Point p3 = new Point(0, 0);
+        Point p4 = new Point(10, 10);
+        System.out.println(p3.getDistance(p4));
         /*
         System.out.println(p);
         System.out.println(p.toString("WKT"));
