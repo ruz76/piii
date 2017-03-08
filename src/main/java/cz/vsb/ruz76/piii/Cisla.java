@@ -20,9 +20,14 @@ public class Cisla {
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
-                //String[] country = line.split(cvsSplitBy);
+                String[] fields = line.split(cvsSplitBy);
+                //System.out.println(fields[0]);
+                double x = Double.parseDouble(fields[0]);
+                double y = Double.parseDouble(fields[1]);
+                Point p = new Point(x, y);
+                System.out.println(p);
                 //System.out.println("Country [code= " + country[4] + " , name=" + country[5] + "]");
-                System.out.println(line);
+                //System.out.println(line);
 
             }
 
