@@ -93,4 +93,13 @@ public class Point {
                 return this.toString();
         }
     }
+
+    //TODO
+    //Metoda prijme Point
+    //Metoda vrati vzdalenost od this
+    //c^2 = a^2+ b^2
+    //Math
+    public double getDistance(Point p) {
+        return 0;
+    }
 }
