@@ -63,7 +63,21 @@ public class Point {
     }
 
     public String toString(String type) {
-        return "POINT(" + x + " " + y + ")";
-        //return super.toString();
+        String output = this.toString();
+        switch (type) {
+            case "WKT":
+                output = this.toString();
+                break;
+            case "Simple":
+                output = x + " " + y;
+                break;
+            case "super":
+                output = super.toString();
+                break;
+            default:
+                output = this.toString();
+                break;
+        }
+        return output;
     }
 }
