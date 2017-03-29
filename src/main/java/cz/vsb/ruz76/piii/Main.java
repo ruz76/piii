@@ -3,7 +3,7 @@ package cz.vsb.ruz76.piii;
 public class Main {
 
     /**
-     * Spouštěcí metoda pro tesotávní třídy Cisla.
+     * Spouštěcí metoda pro tesotávní třídy IDW.
      * @param args
      */
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class Main {
         System.out.println(p.toString("nevim"));
         */
 
-        Cisla cisla = new Cisla();
+        IDW cisla = new IDW();
         cisla.readMeasures();
         //cisla.datum();
         //cisla.suma(Integer.parseInt(args[0]));

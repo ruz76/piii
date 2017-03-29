@@ -7,8 +7,13 @@ import java.util.Random;
 /**
  * Created by ruz76 on 15.2.2017.
  */
-public class Cisla {
+public class IDW {
     private static final String FILENAME = "measures.csv";
+    private Measures measures;
+
+    public IDW() {
+        measures = new Measures();
+    }
 
     public void readMeasures() {
         String csvFile = "measures.csv";
@@ -26,6 +31,14 @@ public class Cisla {
                 double y = Double.parseDouble(fields[1]);
                 Point p = new Point(x, y);
                 System.out.println(p);
+
+                double dust = Double.parseDouble(fields[2]);
+                double temperature = Double.parseDouble(fields[3]);
+                double pressure = Double.parseDouble(fields[4]);
+                Measure measure = new Measure(x, y, dust, temperature, pressure);
+
+                measures.add(measure);
+
                 //System.out.println("Country [code= " + country[4] + " , name=" + country[5] + "]");
                 //System.out.println(line);
 
