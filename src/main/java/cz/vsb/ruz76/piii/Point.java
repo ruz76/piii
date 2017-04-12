@@ -94,11 +94,11 @@ public class Point {
         }
     }
 
-    //TODO
-    //Metoda prijme Point
-    //Metoda vrati vzdalenost od this
-    //c^2 = a^2+ b^2
-    //Math
+    /*
+    * @param p Bod
+    * @return vzdalenost Bodu od this
+    * c^2 = a^2+ b^2
+    */
     public double getDistance(Point p) {
         return Math.hypot(this.x - p.x, this.y - p.y);
     }

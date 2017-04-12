@@ -18,21 +18,39 @@ public class MeasuresStorage extends ArrayList {
     private MeasuresStorage() {
     }
 
+    private double getValue(Measure m, int type) {
+        switch (type) {
+            case 0:
+                return m.getTemperature();
+            case 1:
+                return m.getPressure();
+            case 2:
+                return m.getDust();
+            default:
+                return m.getTemperature();
+        }
+    }
     /**
      * Vrátí průměrnou teplotu z načtených měření
      *
      * @return průměrnou teplotu
      */
 
-    public double getAverageTemperature() {
-        double sum = 0;
+    public double getIDW(Point p, int type) {
+        double numerator = 0; //suma nahore
+        double denominator = 0; //suma dole
         for (int i=0; i<this.size(); i++) {
             Measure measure = (Measure) ourInstance.get(i);
-            double temperature = measure.getTemperature();
-            sum += temperature;
-
+            double distance = measure.getDistance(p);
+            double value = getValue(measure, type);
+            double weight = 1 / Math.pow(distance, 2);
+            double weightedtemperature = weight * value;
+            numerator += weightedtemperature;
+            denominator += weight;
         }
-        return sum / ourInstance.size();
+        System.out.println("Numerator: " + numerator);
+        System.out.println("Denominator: " + denominator);
+        return numerator / denominator;
     }
 
     /**
@@ -53,7 +71,7 @@ public class MeasuresStorage extends ArrayList {
                 double x = Double.parseDouble(fields[0]);
                 double y = Double.parseDouble(fields[1]);
                 Point p = new Point(x, y);
-                System.out.println(p);
+                //System.out.println(p);
 
                 double dust = Double.parseDouble(fields[2]);
                 double temperature = Double.parseDouble(fields[3]);

@@ -1,78 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cz.vsb.ruz76.piii.MainWindow">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="13" y="58" width="395" height="152"/>
+      <xy x="20" y="20" width="275" height="204"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="31b6e" class="javax.swing.JLabel">
+      <component id="d970d" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="5" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+          <gridbag top="0" left="0" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="X: "/>
+          <text value="Longitude"/>
         </properties>
       </component>
-      <component id="819c" class="javax.swing.JTextField" binding="x">
+      <component id="bfdb9" class="javax.swing.JTextField" binding="txtLongitude">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="0.0"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="18.5"/>
+          <text value="15.0"/>
         </properties>
       </component>
-      <component id="949d8" class="javax.swing.JLabel">
+      <component id="ed9bf" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="5" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Y:"/>
+          <text value="Latitude"/>
         </properties>
       </component>
-      <component id="a59b7" class="javax.swing.JTextField" binding="y">
+      <component id="6b9d4" class="javax.swing.JTextField" binding="txtLatitude">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="0.0"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="49.5"/>
+          <text value="49.0"/>
         </properties>
       </component>
-      <component id="cfa39" class="javax.swing.JButton" binding="btnCompute">
+      <component id="be58c" class="javax.swing.JButton" binding="btnInterpolate">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="0.0"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Vypočítat"/>
+          <text value="Interpolovat"/>
         </properties>
       </component>
-      <component id="db739" class="javax.swing.JLabel">
+      <component id="3da72" class="javax.swing.JComboBox" binding="cmbType">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="5" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="409ff" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="Výsledek"/>
         </properties>
       </component>
-      <component id="a36cf" class="javax.swing.JTextField" binding="output">
+      <component id="1a79a" class="javax.swing.JTextField" binding="txtResult">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="0.0"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <minimumSize width="18" height="31"/>
+          <scrollOffset value="0"/>
+          <text value="                         "/>
+        </properties>
       </component>
     </children>
   </grid>
