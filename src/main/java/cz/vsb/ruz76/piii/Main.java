@@ -10,6 +10,8 @@ public class Main {
 
         MeasuresStorage.getInstance().readMeasures("measures.csv");
         System.out.println(MeasuresStorage.getInstance().getAverageTemperature());
-
+        MainWindow mw = new MainWindow();
+        mw.setSize(250, 112);
+        mw.setVisible(true);
     }
 }
