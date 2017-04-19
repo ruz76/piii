@@ -9,11 +9,13 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        /*UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         MeasuresStorage.getInstance().readMeasures("measures.csv");
         MainWindow mw = new MainWindow();
         mw.setSize(200, 200);
         mw.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mw.setVisible(true);
+        */
+        MeasuresStorage.getInstance().readMeasuresFromDB();
     }
 }

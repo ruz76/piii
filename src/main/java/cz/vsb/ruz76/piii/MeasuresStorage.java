@@ -1,6 +1,7 @@
 package cz.vsb.ruz76.piii;
 
 import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -113,6 +114,38 @@ public class MeasuresStorage extends ArrayList {
                 //bw.write(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure + "\N");
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Přečte měření z SQL databáze pomocí JDBC
+     */
+
+    public void readMeasuresFromDB() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://geoserver2.vsb.cz:3306/test","test", "xxx");
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM measures");
+            while (rs.next()) {
+                //TODO Sestavení kolekce měření
+                System.out.println(rs.getFloat("x"));
+                System.out.println(rs.getFloat("y"));
+                System.out.println(rs.getFloat("dust"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
