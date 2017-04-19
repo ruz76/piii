@@ -1,6 +1,7 @@
 package cz.vsb.ruz76.piii;
 
 import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -30,6 +31,66 @@ public class MeasuresStorage extends ArrayList {
                 return m.getTemperature();
         }
     }
+
+    /*
+    * Prints IDW value in grid
+    * */
+
+    public void saveIDWGridToDB(double x, double y, double delta, double rows, double cols)
+    {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://geoserver2.vsb.cz:3306/test","test", "gis");
+            Statement s = conn.createStatement();
+            s.execute("CREATE TABLE IF NOT EXISTS ruz76grid (x float, y float, temperature float)");
+            s.execute("DELETE FROM ruz76grid");
+            for (int i = 0; i< rows; i++) {
+                for (int j = 0; j< cols; j++) {
+                    double curx = x + (j * delta);
+                    double cury = y + (i * delta);
+                    double idw = getIDW(new Point(curx, cury), 0);
+                    s.execute("INSERT INTO ruz76grid (x, y, temperature) VALUES (" + curx + ", " + cury + ", " + idw + ")");
+                }
+            }
+            /*
+            Ověření, že byl grid zapsán.
+            ResultSet rs = s.executeQuery("SELECT * FROM ruz76grid");
+            while (rs.next()) {
+                System.out.println(rs.getFloat("x"));
+                System.out.println(rs.getFloat("y"));
+                System.out.println(rs.getFloat("temperature"));
+            }
+            */
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /*
+    * Prints IDW value in grid
+    * */
+
+    public void getIDWGrid(double x, double y, double delta, double rows, double cols)
+    {
+        for (int i = 0; i< rows; i++) {
+            for (int j = 0; j< cols; j++) {
+                double idw = getIDW(new Point(x + (j * delta), y + (i * delta)), 0);
+                System.out.println(idw);
+            }
+        }
+    }
     /**
      * Vrátí průměrnou teplotu z načtených měření
      *
@@ -48,8 +109,8 @@ public class MeasuresStorage extends ArrayList {
             numerator += weightedtemperature;
             denominator += weight;
         }
-        System.out.println("Numerator: " + numerator);
-        System.out.println("Denominator: " + denominator);
+        //System.out.println("Numerator: " + numerator);
+        //System.out.println("Denominator: " + denominator);
         return numerator / denominator;
     }
 
@@ -113,6 +174,46 @@ public class MeasuresStorage extends ArrayList {
                 //bw.write(x + ";" + y + ";" + dust + ";" + temperature + ";" + pressure + "\N");
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Přečte měření z SQL databáze pomocí JDBC
+     */
+
+    public void readMeasuresFromDB() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://geoserver2.vsb.cz:3306/test","test", "gis");
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM measures");
+            while (rs.next()) {
+                double x = (double) rs.getFloat("x");
+                double y = (double) rs.getFloat("y");
+                double dust = (double) rs.getFloat("dust");
+                double temperature = (double) rs.getFloat("temperature");
+                double pressure = (double) rs.getFloat("pressure");
+                Measure measure = new Measure(x, y, dust, temperature, pressure);
+                ourInstance.add(measure);
+                //TODO Sestavení kolekce měření
+                /*System.out.println(rs.getFloat("x"));
+                System.out.println(rs.getFloat("y"));
+                System.out.println(rs.getFloat("dust"));
+                */
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            conn.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
